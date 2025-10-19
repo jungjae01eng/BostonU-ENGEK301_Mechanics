@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Config
-DATA_FILE = "buckling_raw_data_group_1.xlsx"
+DATA_FILE = "assets/buckling_raw_data_group_1.xlsx"
 SHEET = 0
 DATA_START_ROW = 5
 DATA_END_ROW = 10
@@ -42,7 +42,7 @@ y_mean = [data_1.mean(), data_2.mean(), data_3.mean(), data_4.mean()]
 plt.figure()
 plt.scatter(x_raw, y_raw, s=25, alpha=0.5, label="datas")
 plt.plot(x_mean, y_mean, marker="o", linestyle="-", label="mean values")
-plt.xlabel("Length (inches)")
+plt.xlabel("Length (in)")
 plt.ylabel("p_mean (oz)")
 plt.title("Length vs. p_mean")
 plt.grid(True)

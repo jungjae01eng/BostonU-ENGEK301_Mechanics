@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Config
-DATA_FILE = "buckling_raw_data_group_1.xlsx"
+DATA_FILE = "assets/buckling_raw_data_group_1.xlsx"
 SHEET = 0
 DATA_START_ROW = 5
 DATA_END_ROW = 10
