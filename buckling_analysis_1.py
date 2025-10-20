@@ -39,12 +39,18 @@ x_mean = [LEN_1, LEN_2, LEN_3, LEN_4]
 y_mean = [data_1.mean(), data_2.mean(), data_3.mean(), data_4.mean()]
 
 # Plotting
+plt.close("all")
+
 plt.figure()
-plt.scatter(x_raw, y_raw, s=25, alpha=0.5, label="datas")
-plt.plot(x_mean, y_mean, marker="o", linestyle="-", label="mean values")
+plt.gcf().canvas.manager.set_window_title("buckling_analysis_1")
+
+plt.scatter(x_raw, y_raw, s=25, alpha=0.5, label="Data")
+plt.plot(x_mean, y_mean, marker="o", linestyle="-", label="Mean Values")
+
+plt.title("Length vs. p_mean")
 plt.xlabel("Length (in)")
 plt.ylabel("p_mean (oz)")
-plt.title("Length vs. p_mean")
+
 plt.grid(True)
 plt.legend()
 plt.show()

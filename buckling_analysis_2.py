@@ -57,14 +57,35 @@ slope, intercept = np.polyfit(x_fit[mask], y_fit[mask], 1)
 x_line = np.linspace(np.min(x_fit[mask]), np.max(x_fit[mask]))
 y_line = slope * x_line + intercept
 
+y_lo = min(min(y_raw), min(y_min))
+y_hi = max(max(y_raw), max(y_max))
+
+pad = 5
+ymin_padded = y_lo - pad
+ymax_padded = y_hi + pad
+
+ymin5 = 5 * np.floor(ymin_padded / 5.0)
+ymax5 = 5 * np.ceil(ymax_padded / 5.0)
+
 # Plot
+plt.close("all")
+
 plt.figure()
-plt.scatter(x_raw, y_raw, s=25, alpha=0.5, color="gray", label="datas")
-plt.plot(x_line, y_line, color="tab:green", linewidth=2, label=f"Linear fit")
-plt.errorbar(x_mean, y_mean, yerr=yerr, fmt="o", color="tab:blue", ecolor="tab:blue", capsize=4, label="Mean ± range")
+plt.gcf().canvas.manager.set_window_title("buckling_analysis_2")
+
+plt.scatter(x_raw, y_raw, s=25, alpha=0.5, color="gray", label="Data")
+plt.plot(x_line, y_line, color="tab:green", linewidth=2, label=f"Linear Fit")
+
+plt.xlim(8, 14)
+plt.ylim(ymin5, ymax5)
+
+plt.yticks(np.arange(ymin5, ymax5 + 0.1, 5))
+plt.errorbar(x_mean, y_mean, yerr=yerr, fmt="o", color="tab:blue", ecolor="tab:blue", capsize=4, label="Mean ± Range")
+
+plt.title("Length vs. p_mean")
 plt.xlabel("Length (in)")
 plt.ylabel("p_mean (oz)")
-plt.title("Length vs. p_mean")
+
 plt.grid(True)
 plt.legend()
 plt.show()
